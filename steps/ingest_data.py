@@ -3,13 +3,6 @@ import logging
 import pandas as pd
 from zenml import step
 
-from datetime import datetime
-
-# Define a custom date parser function
-def date_parser(date_string):
-    return pd.to_datetime(date_string, format='%Y-%m-%d')  # Adjust format as needed
-
-
 class IngestData:
     """
     Ingesting the data from the data_path
@@ -26,7 +19,7 @@ class IngestData:
         Ingesting the data from the data_path
         """
         logging.info(f"Ingesting data from {self.data_path}")
-        return pd.read_csv(self.data_path, index_col=0, parse_dates=True, date_parser=date_parser)
+        return pd.read_csv(self.data_path)
     
 
 @step
